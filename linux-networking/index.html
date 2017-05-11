@@ -1,0 +1,216 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=1024" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <title>Network in Linux | Hamed Mahmoudkhani</title>
+    <meta name="description" content="Presentation for working with network and network services in linux systems." />
+    <meta name="author" content="Hamed Mahmoudkhani" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:regular,semibold,italic,italicsemibold|PT+Sans:400,700,400italic,700italic|PT+Serif:400,700,400italic,700italic" rel="stylesheet" />
+    <link href="css/impress-demo.css" rel="stylesheet" />
+    <link rel="shortcut icon" href="favicon.png" />
+</head>
+
+<body class="impress-not-supported">
+
+<div class="fallback-message">
+    <p>Your browser <b>doesn't support the features required</b> by impress.js, so you are presented with a simplified version of this presentation.</p>
+    <p>For the best experience please use the latest <b>Chrome</b>, <b>Safari</b> or <b>Firefox</b> browser.</p>
+</div>
+
+<div id="impress">
+
+    <div id="welcome" class="step slide nopadding overhidden animate" data-x="0" data-rotate-y="36" data-z="-0">
+        <div class="bg" style="background-image: url('./img/net1.jpg');"></div>
+        <div class="cont white">
+            <p>خوش اومدید به <h1><b>شبکه در لینوکس</b></p></h1>
+            <span class="sm oneline">با <h2>حامد محمودخانی</h2> (hmigeek@gmail.com)</span>
+            <div class="spacemd"></div>
+            <span>گفتگوی درباره ی : </span>
+            <ul class="sm">
+                <li>چرا لینوکس برای شبکه ؟</li>
+                <li>سرآغاز و فرمان ها</li>
+                <li>پیکربندی و اجرای چند سرویس (اگه وقت داشتیم)</li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <div id="why-network-linux" class="step slide overhidden" data-x="728" data-rotate-y="72" data-z="-529">
+        <div class="bg" style="background-image: url('./img/why-linux-network.png');"></div>
+        <div class="cont">
+            <h3>لینوکس ، شبکه ، چرا ؟</h3>
+            <div class="spacemd"></div>
+            <div class="sm">
+                <p>مجانی و آزاده و همیشه هم میمونه!</p>
+                <p>چابک ، نیرومند ، بی بیم!</p>
+                <p>Customizable و ترفند پذیر</p>
+                <p>پایدار ،‌ پشتیبانی خوب</p>
+                <p>همه جا انجام‌پذیره</p>
+                <p>کاربر پسند نیست!</p>
+            </div>
+        </div>
+    </div>
+    
+
+    <div id="usage-of-supercomputers" class="step slide" data-x="1006" data-rotate-y="108" data-z="-1384">
+        <a href="https://en.wikipedia.org/wiki/Usage_share_of_operating_systems" class="sm">https://en.wikipedia.org/wiki/Usage_share_of_operating_systems</a>
+        <img src="./img/top500.png" alt="TOP500 SuperComputers OS Usage" class="height50 zoomable">
+        <img src="./img/top500chart.png" alt="TOP500 Supercomputers OS Usage" class="height50 zoomable">
+    </div>
+    
+
+    <div id="commands" class="step slide nopadding" data-x="728" data-rotate-y="144" data-z="-2240">
+        <div class="bg" style="background-image: url('./img/cli.png');"></div>
+        <div class="cont white left">
+            <h3>فرمان ها</h3>
+            <div class="spacemd"></div>
+            <ul dir="ltr">
+                <li>ifconfig</li>
+                <li>ping</li>
+                <li>arp</li>
+                <li>traceroute</li>
+                <li>netstat</li>
+                <li>dig</li>
+                <li>nslookup</li>
+                <li>host</li>
+            </ul>
+        </div>
+    </div>
+    
+
+    <div id="ifconfig" class="step slide" data-x="0" data-rotate-y="180" data-z="-2769">
+        <h4>Ifconfig</h4>
+        <span class="sm">InterFaceConfig</span>
+        <div class="spacemd"></div>
+        <ul>
+            <li>دیدن جایگاه Interface های شبکه</li>
+            <li>پیکربندی Interface های شبکه</li>
+            <li>فعال(Enable) و غیرفعال (Disable) کردن Interface</li>
+        </ul>
+    </div>
+    
+
+    <div id="ping" class="step slide" data-x="-899" data-rotate-y="216" data-z="-2769">
+        <h4>Ping</h4>
+        <span class="sm">صدا کردن کسی در شبکه!</span>
+        <div class="spacemd"></div>
+        <ul>
+            <li>آگاهی از جایگاه(وضعیت) دیگران در شبکه</li>
+            <li>فهمیدن احتمالی سیستم [عامل]</li>
+            <li>تست سرعت</li>
+            <li>بررسی کلی شبکه</li>
+        </ul>
+        <div class="spacemd"></div>
+        <h5>TTL - Time To Live</h5>
+        <p class="sm">مشخص میکنه که هر بسته میتونه چند بار دست به دست بشه</p>
+        <p class="sm">از اینکه بسته در گردابی از روتر ها بیوفته جلوگیری میکنه</p>
+        <div class="spacemd"></div>
+        <h4>Arp</h4>
+        <span class="sm">Address Resolution Protocol</span>
+        <p>قیافه دستگاه های شبکه رو یادشه</p>
+        <div class="spacemd"></div>
+    </div>
+    
+
+    <div id="traceroute" class="step slide" data-x="-1628" data-rotate-y="252" data-z="-2240">
+        <h4>traceroute</h4>
+        <span class="sm">کجا ها میریم خودمون نمیدونستیم!</span>
+        <div class="spacemd"></div>
+        <h5>خیلی باحاله ، چطوری کار میکنه ؟</h5>
+        <div class="spacesm"></div>
+        <p class="sm">با ارسال بسته های با TTL جورواجور</p>
+        <p class="sm">چون ICMPــیه جوابشو داریم</p>
+    </div>
+    
+
+    <div id="netstat" class="step slide" data-x="-1906" data-rotate-y="288" data-z="-1384">
+        <h4>netstat</h4>
+        <span class="sm">Network Statistic</span>
+        <div class="spacemd"></div>
+        <p>اطلاعاتی میده درباره وضعیت اتصال(Connection)</p>
+        <p>جدول مسیریابی (Routing Table)</p>
+        <p>جدول Interface ها</p>
+        <p>آمار شبکه (Network Statics)</p>
+    </div>
+    
+
+    <div id="dig" class="step slide" data-x="-1628" data-rotate-y="324" data-z="-529">
+        <h4>DIG</h4>
+        <span class="sm">Domain Information Groper</span>
+        <div class="spacemd"></div>
+        <p class="sm">اطلاعاتی درباره رکورد های DNS</p>
+        <p>معمولا برای تست کوئری های DNS استفاده میشه</p>
+        <div class="spacemd"></div>
+        <h4>nslookup</h4>
+        <div class="spacemd"></div>
+        <p>کاربردش شبیه بالایی ولی باهاش فقط رکورد A رو میگیرن</p>
+        <p>یعنی اینکه باهاش آی پی سایتو میفهمن!</p>
+        <p>یه کاربرد خوبش اینه که میتونین DNSسرور خودتونو تست کنین</p>
+    </div>
+    
+
+    <div id="host" class="step slide" data-x="-900" data-rotate-y="360" data-z="-0">
+        <h4>host</h4>
+        <span class="sm">ابزار آیپی چندکاره!</span>
+        <div class="spacemd"></div>
+        <p>IPv4</p>
+        <p>IPv6</p>
+        <p>DNS Records</p>
+    </div>
+
+    <div id="questions" class="step censmall" data-x="-553"  data-rotate-x="90" data-rotate-y="360" data-z="-1270" data-scale="3" data-y="-1000">
+        <h3>Questions ?</h3>
+        <span class="spacemd"></span>
+        <div class="md">
+            <p>HmiGeek@gmail.com</p>
+            <p>Telegram : @hamedmkhani</p>
+            <p>GitHub.com/HmiGeek</p>
+            <a href="http://hmigeek.github.io/presentations/linux-networking">http://hmigeek.github.io/presentations/linux-networking</a>
+        </div>
+    </div>
+
+    <div id="resources" class="step censmall" data-x="-553"  data-rotate-x="90" data-rotate-y="360" data-z="-1270" data-scale="3" data-y="2000">
+        <h3>منابع</h3>
+        <span class="spacemd"></span>
+        <div class="sm">
+        	<p>linux <code>man</code> command</p>
+	        <p><a href="http://linux-training.be/linuxnet.pdf">http://linux-training.be/linuxnet.pdf</a></p>
+	        <p><a href="https://www.tecmint.com/linux-network-configuration-and-troubleshooting-commands/" title="دستورات شبکه در لینوکس">https://www.tecmint.com/linux-network-configuration-and-troubleshooting-commands</a></p>
+	        <p><a href="http://www.hiva-network.com/index.php/education/edu/cmd-commands/416-ping-output" title="فرمان ping">http://www.hiva-network.com/index.php/education/edu/cmd-commands/416-ping-output</a></p>
+	        <p><a href="http://www.hiva-network.com/index.php/education/edu/cmd-commands/268-tracert" title="فرمان tracert">http://www.hiva-network.com/index.php/education/edu/cmd-commands/268-tracert</a></p>
+        </div>
+    </div>
+
+    <div id="overview" class="step" data-x="-553"  data-rotate-x="90" data-rotate-y="360" data-z="-1270" data-scale="3" data-y="-6000">
+    </div>
+
+    <div>
+        
+        
+    </div>
+</div>
+
+<div class="hint">
+    <p>Use a spacebar or arrow keys to navigate</p>
+</div>
+<script>
+if ("ontouchstart" in document.documentElement) { 
+    document.querySelector(".hint").innerHTML = "<p>Tap on the left or right to navigate</p>";
+}
+</script>
+
+<script src="js/impress.js"></script>
+<script>impress().init();</script>
+<script>
+    var z = document.getElementsByClassName('zoomable');
+    for(i=0;i<z.length;i++) {
+        z[i].onclick = function(){
+            this.classList.toggle('widthheight100');
+        }
+    }
+</script>
+
+</body>
+</html>
